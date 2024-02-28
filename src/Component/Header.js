@@ -1,6 +1,12 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({
+  onAddPostClick,
+  showAddPostForm,
+  showAddUserForm,
+
+  onAddUserClick,
+}) => {
   return (
     <>
       <header className="p-2 mb-3 border-bottom bg-success text-white">
@@ -15,14 +21,29 @@ const Header = () => {
 
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 mx-5">
               <li>
-                <a href="/" className="nav-link px-2 link-light">
-                  Overview
-                </a>
+                <button
+                  onClick={onAddPostClick}
+                  className={
+                    showAddPostForm
+                      ? "nav-link px-2 text-white active__nav"
+                      : "nav-link px-2 text-white"
+                  }
+                >
+                  Add Post
+                </button>
               </li>
+
               <li>
-                <a href="/" className="nav-link px-2 text-white">
-                  Inventory
-                </a>
+                <button
+                  onClick={onAddUserClick}
+                  className={
+                    showAddUserForm
+                      ? "nav-link px-2 text-white active__nav"
+                      : "nav-link px-2 text-white"
+                  }
+                >
+                  Add User
+                </button>
               </li>
             </ul>
 

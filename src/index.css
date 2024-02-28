@@ -19,7 +19,6 @@ body {
 
 input,
 textarea,
-button,
 select {
   font: inherit;
   margin-bottom: 1em;
@@ -67,4 +66,38 @@ form {
   border: none;
   color: whitesmoke;
   font-size: 1rem;
+}
+
+.form-float {
+  background-color: white;
+  position: fixed !important;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.3rem;
+  width: 100%;
+  max-width: 550px;
+  user-select: text;
+  visibility: visible;
+  /* overflow: hidden; */
+  border: none;
+  border-radius: 5px;
+  height: max-content;
+  animation: show 0.5s ease-in-out;
+}
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.active__nav {
+  color: #333 !important;
+  background-color: whitesmoke !important;
+  border-radius: 5px;
+  padding: 0.5em;
+  transition: all 0.3s ease-in-out;
 }

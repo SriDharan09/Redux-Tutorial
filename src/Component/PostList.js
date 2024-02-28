@@ -1,14 +1,24 @@
 import React from "react";
 import { selectAllPosts } from "../Features/Posts/PostSlice";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import TimeAgo from "../Features/Posts/TimeAgo";
 
 const PostList = () => {
   const post = useSelector(selectAllPosts);
+  const orderedPosts = post
+    .slice()
+    .sort((a, b) => b.date.localeCompare(a.date));
 
-  const renderPosts = post.map((post) => (
+  const renderPosts = orderedPosts.map((post) => (
     <article key={post.id}>
-      <h3>{post.title}</h3>
+      <div className="d-flex justify-content-between">
+        <h3>{post.title}</h3>
+        <p className="postCredit">
+          {post.userId ? "Posted By: " + post.userId : "Posted By: Unknown"}
+          <TimeAgo timestamp={post.date} />
+        </p>
+      </div>
       <p>{post.content.substring(0, 100)}</p>
     </article>
   ));
